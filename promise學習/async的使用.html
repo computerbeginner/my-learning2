@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async的使用</title>
+</head>
+<body>
+    <!-- 
+        任何函數都可聲明成一個async函數
+        因為要實現的就是異步功能(計時器、ajax請求等等..)
+        要將實現的異步功能封裝到一個函數中，所以在函數前加一個async
+    -->
+
+    <script>
+        async function main(){
+            // 函數內部可添加任意語句，但主要是得到promise對象的狀態和值
+
+            // 情況1:返回非promise對象
+            // return 100;
+
+            // 情況2:返回promise對象
+            // 返回promise實例化對象的狀態及值將影響生成的promise實例對象的狀態及值
+            // return new Promise((resolve, reject) => {
+            //     // resolve('ok');
+            //     // reject('error');
+            // })
+
+            // 情況3:拋出異常
+            throw '出現錯誤';
+        }
+
+        // 調用
+        let result = main();
+
+        result.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的then方法</title>
+</head>
+<body>
+    <!-- 
+        then:指定用於得到成功value的成功回調和用於得到失敗reason的失敗回調，並返回
+        一個新的實例化對象。
+        p1成功的狀態:執行then方法的第一個回調函數。
+        p1失敗的狀態:執行then方法的第二個回調函數。
+
+        then方法返回的promise實例化對象的狀態取決於回調函數的內容:
+            返回非promise實例化對象，得到成功狀態的promise實例對象
+            返回promise實例化對象，則promise實例化對象的狀態和值將影響result變量的狀態和值
+            如果拋出異常，則得到失敗狀態的promise實例對象
+    -->
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+        })
+
+        const result = p1.then(value => {
+            // return new Promise((resolve, reject) => {
+            //     resolve('你好');
+            //     // reject('錯誤');
+            // })
+            throw '異常訊息'
+        }, reason => {
+            // p1狀態為rejected時執行
+            console.log(reason);
+        })
+
+        console.log(result);
+    </script>
+</body>
+</html>

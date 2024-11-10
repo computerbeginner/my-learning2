@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搭建promise基本結構</title>
+    <script src="./搭建promise基本結構.js"></script>
+</head>
+<body>
+    <!-- 
+        1.promise是一個構造函數，作用是為了實例化對象
+            語法: let = new Promise() 再堆內存建立一塊空間，分配其大小及設置地址值
+            堆內存: 儲存引用數據類型(數組、對象、函數)
+            棧內存: 儲存基本數據類型及引用數據類型的地址值
+        
+        2.promise需接收一個參數，類型為回調函數(又稱為執行器executor)
+
+        3.executor回調函數中需接收2參數:resolve和reject
+    -->
+
+    <script>
+        // 創建實例對象
+        let p = new Promise((resolve, reject) => {
+            console.log('我是promise的執行器函數');
+        })
+    </script>
+</body>
+</html>

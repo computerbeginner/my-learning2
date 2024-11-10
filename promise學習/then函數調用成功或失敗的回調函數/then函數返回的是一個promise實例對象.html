@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>then函數返回的是一個promise實例對象</title>
+    <script src="./then函數調用成功或失敗的回調函數.js"></script>
+</head>
+<body>
+    <!-- 
+        then函數是有返回值的
+        新的promise實例對象的狀態取決於then方法返回值，
+        如果沒有返回值，則是成功狀態的promise對象，結果值為undefined
+        如果返回非promise對象，新的實例對象其狀態是成功，返回值就是結果值
+        如果返回promise對象，返回的promise對象的狀態是什麼，新的實例對象其狀態就是什麼
+
+    -->
+
+    <script>
+        let p = new Promise((resolve, reject) => {
+            resolve('ok');
+            // reject('error');
+            // throw '異常';
+        });
+        const p2 = p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+
+        console.log(p2);
+    </script>
+</body>
+</html>

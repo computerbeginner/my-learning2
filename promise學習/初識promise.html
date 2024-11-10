@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初識promise</title>
+</head>
+<body>
+    <button id="btn">發送ajax請求</button>
+    <script>
+        // 1.獲取按鈕
+        let btn = document.querySelector('button');
+        // 2.設置點擊事件
+        btn.onclick = function(){
+            // 3.創建ajax實例化對象
+            let xhr = new XMLHttpRequest();
+            // console.log('ajax實例化對象剛剛被創建出來',xhr.readyState)
+            // 4.打開請求
+            xhr.open('get', 'http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php');
+            // 5.發送請求(send方法中發送的是請求體數據，但是get沒有請求體，而post請求才有)
+            xhr.send();
+            // 6.客戶端接收服務端中響應回來的結果數據
+            xhr.onreadystatechange = function(){
+                // 7.xhr.readyState的狀態:
+                    /*  2為完成請求的發送
+                        3為響應結果途中但未完全響應
+                        4為完全響應結果
+                    */
+                if(xhr.readyState === 4){
+                    if(xhr.status >= 200 && xhr.status <= 300){
+                        // console.log(xhr.response);
+                        // console.log(xhr.responseText);
+                        console.log(JSON.parse(xhr.responseText));
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

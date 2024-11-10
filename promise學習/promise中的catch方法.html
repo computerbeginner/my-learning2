@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的catch方法</title>
+</head>
+<body>
+    <script>
+    // then方法可傳入兩參數，成功和失敗的回調函數
+    // 也可用catch來傳遞失敗的回調函數
+    const p1 = new Promise((resolve, reject) => {
+        reject('error');
+    })
+
+    // catch也返回promise實例對象
+    // 1.如catch函數中無返回值，則得到成功狀態的promise對象，值為undefined
+    // 2.如返回一個非promise對象，則得到成功狀態的promise對象，值為返回數據
+    // 3.如返回一個promise對象，則新的promise對象的狀態和值取決於返回promise對象的狀態和值
+    // const result = p1.catch(reason => {
+    //     // console.log(reason);
+    //     // return reason;
+    //     return new Promise((resolve, reject) => {
+    //         // resolve('ok');
+    //         reject('error');
+    //     })
+    // })
+    // console.log(result);
+
+    // 和then一起使用
+    // 當promise實例化對象的狀態為rejected，則會向下穿透到catch方法
+    p1.then(value => {
+        console.log(value);
+    }).then(value => {
+        console.log(value);
+    }).catch(reason => {
+        console.log(reason);
+    })
+    </script>
+</body>
+</html>

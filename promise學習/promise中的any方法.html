@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的any方法</title>
+</head>
+<body>
+    <!-- 
+        只要參數中有一個promise實例化對象的狀態為fulfilled，則整體結果為fulfilled
+        如果所有promise實例都是rejected，那結果就為rejected
+    -->
+
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+        })
+        let p2 = new Promise((resolve, reject) => {
+            resolve('ok');
+        })
+        let p3 = new Promise((resolve, reject) => {
+            // resolve('ok');
+            reject('error')
+        })
+        
+        let result = Promise.any([p1, p2, p3]);
+        console.log(result);
+    </script>
+</body>
+</html>

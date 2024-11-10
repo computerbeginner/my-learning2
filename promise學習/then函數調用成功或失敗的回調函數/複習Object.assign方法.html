@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.assign方法</title>
+</head>
+<body>
+    <!-- 
+        Object.assign()方法主要用於對象合併，將源對象的屬性複製到目標對象中，返回目標對象。
+        語法:
+            Object.assign(target, source);
+            target:目標對象
+            source:源對象
+            返回值:target目標對象
+    -->
+
+    <script>
+        // // 情況1: 目標和源對象之間沒有同名屬性
+        // let target = { name: '張三' };
+        // let source = { age: 23 };
+        // let obj = Object.assign(target, source);
+        // // obj其實就是target目標對象
+        // console.log(obj);
+        // console.log(target);
+        // console.log(source);
+
+        // console.log(obj === target);
+
+
+        // // 情況2: 如果只是想將兩個或是多個對象的屬性合併，而不改變原有對象的屬性，
+        //         // 則可使用一個新對象作為目標對象
+        // let target = { name: '張三' };
+        // let source = { age: 23 };
+        // let obj = Object.assign({}, target, source);
+        // // obj其實就是target目標對象
+        // console.log(obj);
+        // console.log(target);
+        // console.log(source);
+
+        // console.log(obj === target);
+
+        
+        // // 情況3: 如果目標和源對象之間有同名屬性，則後者對象中的屬性值回覆蓋前者同名的屬性值
+        // let target = { name: '張三', age: 32 };
+        // let source = { age: 23 };
+        // let obj = Object.assign(target, source);
+        // console.log(obj);
+        // console.log(target);
+        // console.log(source);
+
+
+        // 情況4: 多個源對象
+        let target = { name: '張三', age: 32 };
+        let source1 = { age: 23 };
+        let source2 = { age: 35, hobby: '打遊戲' };
+        let obj = Object.assign(target, source1, source2);
+        console.log(obj);
+        console.log(target);
+        console.log(source1);
+        console.log(source2);
+    </script>
+</body>
+</html>

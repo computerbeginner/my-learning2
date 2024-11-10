@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏隊列和微隊列</title>
+</head>
+<body>
+    <!-- 
+        js中用來儲存待執行回調函數的隊列中包含了兩個特定隊列
+        宏隊列:保存執行的宏任務(回調函數)，比如:定時器、DOM事件操作、ajax
+        微隊列:保存執行的微任務(回調函數)，比如:promise
+        js執行順序:
+            同步代碼->微隊列的任務->宏隊列的任務
+    -->
+
+    <script>
+        // 順序式 2 - 4 - 3 -1
+        setTimeout(() => {
+            console.log(1111);
+        })
+        new Promise((resolve, reject) => {
+            resolve();
+            console.log(2222);
+        }).then(value => {
+            console.log(3333);
+        })
+        console.log(4444);
+    </script>
+</body>
+</html>

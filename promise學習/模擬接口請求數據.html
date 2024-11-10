@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模擬接口請求數據</title>
+</head>
+<body>
+    <script>
+        // 模擬請求用戶列表的數據
+        function getUsersList(){
+            return new Promise((resolve, rejecr) => {
+                // 定時器模擬異步
+                setTimeout(() => {
+                    resolve('請求用戶列表的數據');
+                }, 1000)
+            })
+        }
+
+        // 模擬請求輪播圖的數據
+        function getBannersList(){
+            return new Promise((resolve, rejecr) => {
+                // 定時器模擬異步
+                setTimeout(() => {
+                    resolve('請求輪播圖的數據');
+                }, 2000)
+            })
+        }
+
+        
+        // 模擬請求視頻列表的數據
+        function getVideosList(){
+            return new Promise((resolve, rejecr) => {
+                // 定時器模擬異步
+                setTimeout(() => {
+                    resolve('請求視頻列表的數據');
+                }, 3000)
+            })
+        }
+
+        // 模擬程序啟動加載
+        function initLoad(){
+            let all = Promise.all([getUsersList(), getBannersList(), getVideosList()]);
+            all.then(value => {
+                console.log(value);
+            })
+        }
+        initLoad();
+    </script>
+</body>
+</html>

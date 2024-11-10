@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的all方法</title>
+</head>
+<body>
+    <!-- 
+        promise下的all方法針對多個promise異步任務的處理
+        需要接收一個數組當作參數
+        返回值:當所有promise的狀態都是成功，結果值是由每一個promise的結果值組成的數組
+               當其中有一個promise的狀態失敗，最終結果是這個失敗promise的結果值
+    -->
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+        })
+
+        let p2 = new Promise((resolve, reject) => {
+            resolve('hello');
+        })
+
+        let p3 = new Promise((resolve, reject) => {
+            resolve('success');
+            // reject('error');
+        })
+        console.log(Promise.all([p1,p2,p3]));
+    </script>
+</body>
+</html>

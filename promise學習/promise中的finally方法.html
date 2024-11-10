@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的finally方法</title>
+</head>
+<body>
+    <!-- 
+        finally是ES9新增方法，無論promise對象是fulfilled或是rejected狀態，都會執行
+        此方法不接收參數
+    -->
+
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+            // reject('error');
+        })
+
+        p1.then(value => {
+            console.log(value);
+        }).catch(reason => {
+            console.log(reason);
+        }).finally(() => {
+            console.log('最終被執行了');
+        })
+    </script>
+</body>
+</html>

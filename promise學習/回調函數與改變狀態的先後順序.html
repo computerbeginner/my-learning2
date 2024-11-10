@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回調函數與改變狀態的先後順序</title>
+</head>
+<body>
+    <!-- 
+        改變promise狀態和回調函數執行，誰先誰後? 都有可能
+        若執行器函數為同步任務，先改狀態再改回調
+        若為異步任務，先指定回調再改狀態，更為常見 (而promise設計的目的是為了執行異步)
+    -->
+
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            // 同步任務
+            // resolve('ok');
+
+            // 異步任務
+            setTimeout(() => {
+                resolve('ok');
+            }, 1000)
+        })
+
+        setTimeout(() => {
+            p1.then(value => {
+                console.log(value);
+            }, reason => {
+                console.log(reason);
+            })
+        }, 3000)
+    </script>
+</body>
+</html>

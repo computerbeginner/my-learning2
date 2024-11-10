@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async的使用</title>
+</head>
+<body>
+    <!-- 
+        1.async函數結合await表達式
+            async函數不一定要加await，但是有await一定要加async
+        2.await相當於then方法，可直接拿到promise對象成功狀態的值
+        3.await一定要寫在async函數中，但在async函數中可以沒有await
+        4.await後面是promise對象，則返回promise成功的結果值
+        5.await右側非promise的數據，則後面什麼值，就得到什麼
+    -->
+
+    <script>
+        async function main(){
+            // 內部執行異步功能
+            // 1.await右側非promise的數據，則後面什麼值，就得到什麼
+            // let rs = await 100;
+            // console.log(rs);
+
+            // 2.await右側是promise的數據
+            // let rs = await new Promise((resolve, reject) => {
+            //     resolve('ok');
+            // })
+            // console.log(rs);
+
+            // let rs = Promise.resolve('ok');
+            // console.log(rs);
+
+            // 3.await右側為失敗的promise數據，則需要try...catch來捕獲
+            try {
+                // let rs = await new Promise((resolve, reject) => {
+                //     reject('error');
+                // })
+                // console.log(rs);
+
+                let rs = Promise.reject('error');
+                console.log(rs);
+            } catch (e) {
+                console.log(e);
+            }
+
+            // 有了try...catch後續代碼就會繼續執行
+            console.log(1111);
+        }
+        main();
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>then函數調用成功或失敗的回調函數</title>
+    <script src="./then函數調用成功或失敗的回調函數.js"></script>
+</head>
+<body>
+    <!-- 
+        1.任何實例對象的__proto__(隱式原型屬性)的值和構造函數的prototype(顯式原型屬性)的值相同
+        2.任何函數的prototype的值都指向Object原型對象的地址值
+        3.Object.assign方法是對象間的合併的方法
+    -->
+    
+    <script>
+        let p = new Promise((resolve, reject) => {
+            resolve('ok');
+            // reject('error');
+        });
+        // console.log(p);
+
+        p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        });
+
+        console.log('over...');
+    </script>
+</body>
+</html>

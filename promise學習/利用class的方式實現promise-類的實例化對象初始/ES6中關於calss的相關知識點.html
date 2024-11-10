@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6中關於calss的相關知識點</title>
+</head>
+<body>
+    <!-- 
+        1.如何聲明一個類? ES6有意關鍵字 class 類名 {}
+        2.主要是為了產生實例化對象，但是要通過new 關鍵字
+        3.在對象上添加屬性/方法
+            3-1.直接賦值
+                屬性: 屬性名 = 屬性值;
+                方法: 方法名 = function(){}
+            3-2.通過構造器
+                每個類只能有一個構造器，這構造器主要給實例對象的屬性作初始化
+                並且是屬性做初始化的自調用，無須程序員手動執行
+                構造器也被構造函數，其中this指向的是類的實例對象
+        4.在所有實例化對象上添加共同方法(類的顯式原型屬性中)
+          語法: 方法名(){}
+        5.在類本身對象(非實例化對象)身上添加屬性/方法 關鍵字 static
+          屬性: static 屬性名 = 屬性值
+          方法: static 方法名 = function(){}
+          在類對象添加的屬性/方法，其實例化對象是找不到的
+    -->
+
+    <script>
+        class Student {
+            // 通過直接賦值在類的實例化對象添加屬性
+            name = '張三';
+            // 通過直接賦值在類的實例化對象添加方法
+            study = function() {
+                // 函數中this指向誰，取決於誰調用了這個函數
+                // 類中的方法中的this指向類的實例對象
+                console.log('學習...');
+            }
+
+            constructor(name) {
+                // console.log(this);
+                this.name = name;
+            }
+
+            static a = 1;
+            static b = () => {
+                console.log('b');
+            }
+            static c = function() {
+                console.log('c');
+            }
+        }
+        const p1 = new Student('張三');
+        console.log(p1);
+
+        // 輸出屬性
+        console.log(p1.name);
+        // 調用方法
+        p1.study();
+
+        // 調用類身上的屬性/方法
+        console.log(Student.a);
+        Student.b();
+        Student.c();
+
+    </script>
+</body>
+</html>

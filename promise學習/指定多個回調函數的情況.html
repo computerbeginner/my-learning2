@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指定多個回調函數的情況</title>
+</head>
+<body>
+    <!-- 
+        一個promise實例對象指定多個成功/失敗的回調函數，都會調用嗎?
+        一定會執行，但狀態要改成fulfilled或是rejected，不能是pending
+    -->
+    
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            // resolve('ok');
+            // reject('error');
+            // throw '異常';
+            // 不改變狀態
+        })
+
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>

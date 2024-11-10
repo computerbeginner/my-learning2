@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的allSettled方法</title>
+</head>
+<body>
+    <!-- 
+        allSettled方法用來確定異步操作是否結束(不管成功失敗)
+        包含fulfilled和rejected兩種情況
+    -->
+
+    <script>
+        function ajax(url){
+            return new Promise((reslove, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open('get', url, true);
+                xhr.send();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4){
+                        if(xhr.status >= 200 && xhr.status <= 300){
+                            reslove(xhr.responseText);
+                        }else{
+                            reject(xhr.responseText);
+                        }
+                    }
+                }
+            })
+        }
+
+        Promise.allSettled([
+            ajax('http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php'),
+            ajax('http://iwenwiki.com/api/blueberrypai/getListeningInfo.php')
+        ]).then(value => {
+            // console.log(value);
+            // 過濾成功和失敗兩種情況
+            let successList = value.filter(item => item.status === 'fulfilled');
+            console.log('成功', successList);
+
+            let errorList = value.filter(item => item.status === 'rejected');
+            console.log('失敗', errorList);
+        }).catch(reason => {
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>

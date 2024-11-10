@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的reject方法</title>
+</head>
+<body>
+    <!-- 
+        promise.reject始終返回狀態為rejected的實例對象
+        無論參數是否為promise對象，最終都返回失敗的promise
+    -->
+
+    <script>
+        const p1 = Promise.reject(123);
+        console.log(p1);
+
+        const p2 = Promise.reject(new Promise((resolve, reject) => {
+            resolve('Hello');
+        }))
+        console.log(p2);
+    </script>
+</body>
+</html>

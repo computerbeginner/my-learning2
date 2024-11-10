@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改promise的狀態</title>
+</head>
+<body>
+    <!-- 
+        promise對象的狀態分3種:pending, fulfilled, rejected
+    -->
+
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            // 成功
+            // resolve('success');
+
+            // 失敗
+            // reject('error')
+
+            // 拋出異常
+            // throw '錯誤';
+
+            // 狀態只能更改一次，第二次就無效了
+            // resolve(1);
+            // reject(2);
+        })
+    </script>
+</body>
+</html>

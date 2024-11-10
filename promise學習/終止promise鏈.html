@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>終止promise鏈</title>
+</head>
+<body>
+    <!-- 
+        終止promise鏈的方法就是返回一個pending狀態的promise實例化對象
+    -->
+
+    <script>
+        new Promise((resolve, reject) => {
+            resolve(1);
+        }).then(value => {
+            console.log(222);
+        }).then(value => {
+            console.log(333);
+            // 不將狀態改成fulfilled或是rejected
+            return new Promise(() => {})
+        }).then(value => {
+            console.log(444);
+        }).catch(reason => {
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的resolve方法</title>
+</head>
+<body>
+    <script>
+        // 當resolve方法參數非promise對象，則返回成功狀態的promise對象
+        let p1 = Promise.resolve(123);
+        console.log(p1);
+        let p2 = Promise.resolve('123');
+        console.log(p2);
+        let p3 = Promise.resolve([1,2,3]);
+        console.log(p3);
+
+        // 當resolve方法參數為promise對象
+        // 則參數對象的狀態和值將直接影響resolve方法返回值的那個對象的狀態和值
+        let p4 = Promise.resolve(new Promise((resolve, reject) => {
+            resolve('success');
+        }))
+        console.log(p4);
+
+        let p5 = Promise.resolve(new Promise((resolve, reject) => {
+            reject('error');
+        }))
+        console.log(p5);
+    </script>
+</body>
+</html>

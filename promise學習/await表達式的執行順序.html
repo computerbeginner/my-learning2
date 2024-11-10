@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await表達式的執行順序</title>
+</head>
+<body>
+    <!-- 
+        結論:如果有同步和異步同時出現，先執行同步，在執行異步
+    -->
+
+    <script>
+        async function main() {
+            console.log(1111);
+            let result = await Promise.resolve('ok');
+            console.log(result);
+            console.log(2222);
+            console.log(3333);
+            console.log(4444);
+            let result1 = await Promise.resolve('okk');
+            console.log(result1);
+            console.log(6666);
+            console.log(7777);
+        }
+        // 調用
+        main();
+
+        console.log(5555)
+    </script>
+</body>
+</html>

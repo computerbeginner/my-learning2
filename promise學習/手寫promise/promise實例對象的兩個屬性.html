@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise實例對象的兩個屬性</title>
+    <script src="./搭建promise基本結構.js"></script>
+</head>
+<body>
+    <!-- 
+        任何一個構造函數的實例化對象身上都有一個默認屬性，這屬性叫做隱式原型屬性(__proto__)
+        promise實例對象還有2個屬性，一個PromiseState(紀錄promise實例對象的狀態)，一個PromiseResult(紀錄結果值)
+    -->
+
+    <script>
+        let p = new Promise((resolve, reject) => {
+            console.log('我是promise的執行器函數');
+        })
+        console.log(p);
+
+
+        let p1 = new Promise((resolve, reject) => {
+            console.log('我是promise的執行器函數');
+        })
+        console.log(p1);
+
+    </script>
+</body>
+</html>

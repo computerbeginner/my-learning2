@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise中的race方法</title>
+</head>
+<body>
+    <!-- 
+        promise.race方法需要一個數組作為參數，數組內容是promise實例對象
+        不管成功還是失敗，將以最先達到的狀態和結果值為準
+    -->
+
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            resolve(1); 
+            // reject(1);
+        })
+        const p2 = new Promise((resolve, reject) => {
+            resolve(2);
+        })
+        const p3 = new Promise((resolve, reject) => {
+            resolve(3);
+        })
+
+        const result = Promise.race([p1, p2, p3]);
+        console.log(result);
+    </script>
+</body>
+</html>

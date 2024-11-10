@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用class的方式實現promise-類的實例化對象初始</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            resolve('ok');
+            // reject('error');
+            // throw '異常';
+        })
+        
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+
+    </script>
+</body>
+</html>

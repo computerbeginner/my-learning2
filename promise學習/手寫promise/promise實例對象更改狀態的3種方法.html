@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise實例對象更改狀態的3種方法</title>
+    <!-- <script src="./搭建promise基本結構-方法未抽離.js"></script> -->
+    <!-- <script src="./搭建promise基本結構-抽離為普通函數.js"></script> -->
+    <!-- <script src="./搭建promise基本結構-抽離為箭頭函數.js"></script> -->
+    <script src="./搭建promise基本結構-狀態只能更改一次.js"></script>
+
+</head>
+<body>
+    <!-- 
+        1.resolve方法，可將promise實例對象的狀態改為fulfilled
+        2.reject方法，可將promise實例對象的狀態改為rejected
+        3.拋出異常可將狀態改為rejected
+        4.promise實例對象狀態只能改一次
+
+        5.executor執行函數需要2個形參，resolve和reject
+        6.resolve和reject又是2函數(回調函數)
+    -->
+
+    <script>
+        let p = new Promise((resolve, reject) => {
+            resolve('ok');
+            reject('error');
+            // throw '異常';
+        })
+        console.log(p);
+    </script>
+</body>
+</html>
